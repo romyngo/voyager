@@ -30,7 +30,6 @@ import 'tinymce/plugins/wordcount';
 import 'tinymce/plugins/help'; 
 import 'tinymce/plugins/charmap';
 import 'tinymce/plugins/quickbars'; 
-import 'tinymce/plugins/emoticons'; 
 
 
 $(document).ready(function(){
