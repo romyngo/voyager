@@ -29,7 +29,7 @@ var getConfig = function(options) {
         content_css: 'default',
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }',
         selector: 'textarea.richTextBox',
-        base_url: $('meta[name="assets-path"]').attr('content')+'?path=js/',
+        base_url: 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.4.1/',
         skin: 'oxide',
         min_height: 600,
         resize: true,
