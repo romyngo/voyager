@@ -34,36 +34,30 @@ var getConfig = function(options) {
         remove_script_host: false,
         automatic_uploads: true,
         images_upload_handler: (blobInfo) => new Promise((resolve, reject) => {
-            var input = document.createElement('input');
-            input.setAttribute('type', 'file');
-
-            input.onchange = function () {
-                var formdata = new FormData();
-                var csrf = document.querySelector('meta[name="csrf-token"]').content;
-                formdata.append('file', blobInfo.blob(), blobInfo.filename());
-                formdata.append('upload_path', '/tinymce/');
-                formdata.append('_token', csrf);
-                // Show loader
-                $('#voyager-loader').css('z-index', 10000);
-                $('#voyager-loader').fadeIn();
-                $.ajax({
-                    type: 'post',
-                    url: '/admin/tinymce/upload',
-                    data: formdata,
-                    enctype: 'multipart/form-data',
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                })
-                .done((result) => {
-                    resolve(result.url);
-                })
-                .always(() => {
-                    $('#voyager-loader').fadeOut();
-                    $('#voyager-loader').css('z-index', 99);
-                });
-            }
-            input.click();
+            var formdata = new FormData();
+            var csrf = document.querySelector('meta[name="csrf-token"]').content;
+            formdata.append('file', blobInfo.blob(), blobInfo.filename());
+            formdata.append('upload_path', '/tinymce/');
+            formdata.append('_token', csrf);
+            // Show loader
+            $('#voyager-loader').css('z-index', 10000);
+            $('#voyager-loader').fadeIn();
+            $.ajax({
+                type: 'post',
+                url: '/admin/tinymce/upload',
+                data: formdata,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                cache: false,
+            })
+            .done((result) => {
+                resolve(result.url);
+            })
+            .always(() => {
+                $('#voyager-loader').fadeOut();
+                $('#voyager-loader').css('z-index', 99);
+            });
         }),
         file_picker_types: 'file image media',
         file_picker_callback: (callback, value, meta) => {
