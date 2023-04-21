@@ -32,7 +32,7 @@ var getConfig = function(options) {
         extended_valid_elements : 'input[id|name|value|type|class|style|required|placeholder|autocomplete|onclick]',
         relative_urls: false, // Necessary so uploaded images don't get a relative path but an URL instead.
         remove_script_host: false,
-        automatic_uploads: true,
+        automatic_uploads: false,
         images_upload_handler: (blobInfo) => new Promise((resolve, reject) => {
             var formdata = new FormData();
             var csrf = document.querySelector('meta[name="csrf-token"]').content;
