@@ -18,7 +18,7 @@ var getConfig = function(options) {
         importcss_append: true,
         height: 600,
         image_caption: true,
-        quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+        quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote image quicktable',
         noneditable_class: 'mceNonEditable',
         toolbar_mode: 'sliding',
         contextmenu: 'link image table',
@@ -32,7 +32,7 @@ var getConfig = function(options) {
         extended_valid_elements : 'input[id|name|value|type|class|style|required|placeholder|autocomplete|onclick]',
         relative_urls: false, // Necessary so uploaded images don't get a relative path but an URL instead.
         remove_script_host: false,
-        automatic_uploads: false,
+        automatic_uploads: true,
         images_upload_handler: (blobInfo) => new Promise((resolve, reject) => {
             var formdata = new FormData();
             var csrf = document.querySelector('meta[name="csrf-token"]').content;
