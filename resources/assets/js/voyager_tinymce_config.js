@@ -83,7 +83,11 @@ var getConfig = function(options) {
                     cache: false,
                 })
                 .done((result) => {
-                    callback(result.url);
+                    if (result.success == true && result.url) {
+                        callback(result.url);
+                    } else {
+                        alert(result.message);
+                    }
                 })
                 .always(() => {
                     $('#voyager-loader').fadeOut();
