@@ -52,7 +52,11 @@ var getConfig = function(options) {
                 cache: false,
             })
             .done((result) => {
-                resolve(result.url);
+                if (result.success == true && result.url) {
+                    resolve(result.url);
+                } else {
+                    alert(result.message);
+                }
             })
             .always(() => {
                 $('#voyager-loader').fadeOut();
